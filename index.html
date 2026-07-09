@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="gu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>કિસાન સહાયતા - કૃષિ માહિતી પોર્ટલ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Basic Reset and Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e0f2e0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/farmer-field/1600/800.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #4CAF50;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Weather Section */
+        .weather {
+            background-color: #f0f7f0;
+        }
+
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .weather-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .weather-card h3 {
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        /* Prices Section */
+        .prices {
+            background-color: white;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .price-table tr:hover {
+            background-color: #f0f7f0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #f0f7f0;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>કિસાન સહાયતા</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">હોમ</a></li>
+                        <li><a href="#features">સુવિધાઓ</a></li>
+                        <li><a href="#weather">હવામાન</a></li>
+                        <li><a href="#prices">ભાવ</a></li>
+                        <li><a href="#contact">સંપર્ક</a></li>
+                        <li><a href="#અમારી ખેતી ">અમારી ખેતી </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSoJA6z75yXx0zNJSI61laLqcodIDXMJgwjQ&s"
+        <div class="hero-content">
+            <h1>કિસાનો માટે ખુશખબર</h1>
+            <p>આધુનિક ખેતીની તકનીકો, હવામાન માહિતી અને બજાર ભાવો - બધું એક જગ્યાએ</p>
+            <a href="#features" class="btn">વધુ જાણો</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">અમારી સુવિધાઓ</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h3>હવામાન પૂર્વાનુમાન</h3>
+                    <p>તમારા વિસ્તારનું સચોટ હવામાન પૂર્વાનુમાન મેળવો અને તમારી ખેતીની આયોજન કરો.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>બજાર ભાવ</h3>
+                    <p>વિવિધ મંડીઓમાં તમારી પાકના વર્તમાન ભાવો તપાસો અને શ્રેષ્ઠ વેચાણ માટે નિર્ણય લો.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>ખેતી માર્ગદર્શન</h3>
+                    <p>નવીનતમ ખેતી તકનીકો, પાક સંરક્ષણ અને સુધારેલી પદ્ધતિઓ વિશે જાણો.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>લોન કેલ્ક્યુલેટર</h3>
+                    <p>ખેતી લોન, સબસિડી અને સરકારી યોજનાઓ માટે યોગ્ય માહિતી અને ગણતરી કરો.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>કિસાન સમુદાય</h3>
+                    <p>અન્ય કિસાનો સાથે જોડાઓ, અનુભવો વહેંચો અને એકબીજાને મદદ કરો.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>રોગ અને જંતુ નિયંત્રણ</h3>
+                    <p>તમારા પાકને અસર કરતા રોગો અને જંતુઓ માટે ઓળખ અને ઉપચાર મેળવો.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather">
+        <div class="container">
+            <h2 class="section-title">હવામાન માહિતી</h2>
+            <div class="weather-container">
+                <div class="weather-card">
+                    <h3>આજનું હવામાન</h3>
+                    <div class="weather-info">
+                        <span>તાપમાન:</span>
+                        <span id="today-temp">32°C</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>ભેજ:</span>
+                        <span id="today-humidity">65%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>પવન:</span>
+                        <span id="today-wind">12 km/h</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>વરસાદ:</span>
+                        <span id="today-rain">20%</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <h3>કાલનું હવામાન</h3>
+                    <div class="weather-info">
+                        <span>તાપમાન:</span>
+                        <span id="tomorrow-temp">30°C</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>ભેજ:</span>
+                        <span id="tomorrow-humidity">70%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>પવન:</span>
+                        <span id="tomorrow-wind">10 km/h</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>વરસાદ:</span>
+                        <span id="tomorrow-rain">40%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>હવામાન :</span>
+                        <span id="tomorrow-rain">100%</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <h3>સપ્તાહ ભવિષ્યવાણી</h3>
+                    <div class="weather-info">
+                        <span>સોમવાર:</span>
+                        <span>31°C, 30%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>મંગળવાર:</span>
+                        <span>29°C, 60%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>બુધવાર:</span>
+                        <span>28°C, 70%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>ગુરુવાર:</span>
+                        <span>30°C, 40%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>શુક્રવાર :</span>
+                        <span>50°C, 40%</span>
+                    </div>
+                    <div class="weather-info">
+                        <span>શનિવાર :</span>
+                        <span>70%, 40%</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="refresh-weather" class="btn">હવામાન માહિતી સુધારો</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section id="prices" class="prices">
+        <div class="container">
+            <h2 class="section-title">આજના બજાર ભાવ</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>પાક</th>
+                        <th>મંડી</th>
+                        <th>ન્યૂનતમ ભાવ (₹/ક્વિંટલ)</th>
+                        <th>મહત્તમ ભાવ (₹/ક્વિંટલ)</th>
+                        <th>સરેરાશ ભાવ (₹/ક્વિંટલ)</th>
+                    </tr>
+                </thead>
+                <tbody id="price-table-body">
+                    <tr>
+                        <td>ઘઉં</td>
+                        <td>અમદાવાદ</td>
+                        <td>1,950</td>
+                        <td>2,100</td>
+                        <td>2,025</td>
+                    </tr>
+                    <tr>
+                        <td>બાજરી</td>
+                        <td>રાજકોટ</td>
+                        <td>1,800</td>
+                        <td>1,950</td>
+                        <td>1,875</td>
+                    </tr>
+                    <tr>
+                        <td>કપાસ</td>
+                        <td>સુરત</td>
+                        <td>5,500</td>
+                        <td>6,200</td>
+                        <td>5,850</td>
+                    </tr>
+                    <tr>
+                        <td>મગફળી</td>
+                        <td>જુનાગઢ</td>
+                        <td>4,800</td>
+                        <td>5,400</td>
+                        <td>5,100</td>
+                    </tr>
+                    <tr>
+                        <td>રાઈ</td>
+                        <td>વડોદરા</td>
+                        <td>4,200</td>
+                        <td>4,800</td>
+                        <td>4,500</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="refresh-prices" class="btn">ભાવ સુધારો</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">અમારો સંપર્ક કરો</h2>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">તમારું નામ</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ઈમેલ</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">ફોન નંબર</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">સંદેશ</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">સંદેશ મોકલો</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>કિસાન સહાયતા</h3>
+                    <p>ગુજરાતના કિસાનો માટે ડિજિટલ મંચ</p>
+                    <div style="margin-top: 15px;">
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" style="color: white;"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ઝડપી લિંક્સ</h3>
+                    <ul>
+                        <li><a href="#home">હોમ</a></li>
+                        <li><a href="#features">સુવિધાઓ</a></li>
+                        <li><a href="#weather">હવામાન</a></li>
+                        <li><a href="#prices">ભાવ</a></li>
+                        <li><a href="#contact">સંપર્ક</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>સંસાધનો</h3>
+                    <ul>
+                        <li><a href="#">ખેતી માર્ગદર્શન</a></li>
+                        <li><a href="#">સરકારી યોજનાઓ</a></li>
+                        <li><a href="#">બજાર ભાવ</a></li>
+                        <li><a href="#">રોગ નિદાન</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>સંપર્ક માહિતી</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ગાંધીનગર, ગુજરાત</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@kisansahayta.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 કિસાન સહાયતા. સર્વ હક્કો સુરક્ષિત. | વિદ્યાર્થી પ્રોજેક્ટ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+
+        // Weather data refresh
+        document.getElementById('refresh-weather').addEventListener('click', function () {
+            // Simulate API call with random data
+            document.getElementById('today-temp').textContent = Math.floor(Math.random() * 10 + 28) + '°C';
+            document.getElementById('today-humidity').textContent = Math.floor(Math.random() * 30 + 50) + '%';
+            document.getElementById('today-wind').textContent = Math.floor(Math.random() * 15 + 5) + ' km/h';
+            document.getElementById('today-rain').textContent = Math.floor(Math.random() * 80) + '%';
+
+            document.getElementById('tomorrow-temp').textContent = Math.floor(Math.random() * 10 + 26) + '°C';
+            document.getElementById('tomorrow-humidity').textContent = Math.floor(Math.random() * 30 + 55) + '%';
+            document.getElementById('tomorrow-wind').textContent = Math.floor(Math.random() * 15 + 5) + ' km/h';
+            document.getElementById('tomorrow-rain').textContent = Math.floor(Math.random() * 80) + '%';
+
+            showToast('હવામાન માહિતી સફળતાપૂર્વક સુધારાઈ!');
+        });
+
+        // Price data refresh
+        document.getElementById('refresh-prices').addEventListener('click', function () {
+            // Simulate API call with random data
+            const tableBody = document.getElementById('price-table-body');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                const basePrice = parseInt(cells[2].textContent);
+
+                // Add or subtract random amount
+                const variation = Math.floor(Math.random() * 100) - 50;
+
+                cells[2].textContent = (basePrice + variation).toLocaleString('en-IN');
+                cells[3].textContent = (basePrice + 150 + variation).toLocaleString('en-IN');
+                cells[4].textContent = (basePrice + 75 + variation).toLocaleString('en-IN');
+            }
+
+            showToast('બજાર ભાવ સફળતાપૂર્વક સુધારાયા!');
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would normally send the data to a server
+            // For this demo, we'll just show a success message
+            showToast('તમારો સંદેશ સફળતાપૂર્વક મોકલાયો! અમે ટૂંક સમયમાં તમારો જવાબ આપીશું.');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // Simulate real-time weather updates
+        setInterval(() => {
+            const tempElement = document.getElementById('today-temp');
+            const currentTemp = parseInt(tempElement.textContent);
+            const newTemp = currentTemp + (Math.random() > 0.5 ? 1 : -1);
+            tempElement.textContent = newTemp + '°C';
+        }, 30000); // Update every 30 seconds
+    </script>
+
+
+</body>
+
+</html>
